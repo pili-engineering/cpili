@@ -21,17 +21,17 @@ $ make install
 ## Usage
 
 ```bash
-cpili [global options] {[input file options] -i input_file} ... {[output options] -o output}
+cpili -i input_file [output options] -o output
 
 Options
 
     Generic options
     
         -h, --help
-            Show this message
+            Show this message.
             
         -v, --version
-            Show version information
+            Show version information.
         
     Main options
     
