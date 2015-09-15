@@ -13,7 +13,7 @@ $ brew install cpili
 With git:
 
 ```
-$ git clone https://github.com/pili-engineering/cpili.git /tmp/cpili
+$ git clone git@github.com:pili-engineering/cpili.git /tmp/cpili
 $ cd /tmp/cpili
 $ make install
 ```

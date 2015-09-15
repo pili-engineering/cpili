@@ -26,6 +26,7 @@
 		E91361D11BA8767100850259 /* cpili */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cpili; sourceTree = BUILT_PRODUCTS_DIR; };
 		E91361E81BA884B200850259 /* cpili_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpili_main.c; sourceTree = "<group>"; };
 		E91361E91BA884B200850259 /* cpili_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpili_main.h; sourceTree = "<group>"; };
+		E91361EC1BA89D4000850259 /* cpili_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpili_version.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 			children = (
 				E91361E81BA884B200850259 /* cpili_main.c */,
 				E91361E91BA884B200850259 /* cpili_main.h */,
+				E91361EC1BA89D4000850259 /* cpili_version.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
