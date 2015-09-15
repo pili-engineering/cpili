@@ -11,6 +11,7 @@
 		E91361FC1BA8AEB300850259 /* tool_task.c in Sources */ = {isa = PBXBuildFile; fileRef = E91361FA1BA8AEB300850259 /* tool_task.c */; };
 		E91361FF1BA8AF4400850259 /* tool_help.c in Sources */ = {isa = PBXBuildFile; fileRef = E91361FD1BA8AF4400850259 /* tool_help.c */; };
 		E91362051BA8B8C500850259 /* tool_error.c in Sources */ = {isa = PBXBuildFile; fileRef = E91362031BA8B8C500850259 /* tool_error.c */; };
+		E91362081BA8BF1100850259 /* tool_router.c in Sources */ = {isa = PBXBuildFile; fileRef = E91362061BA8BF1100850259 /* tool_router.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,9 @@
 		E91361FE1BA8AF4400850259 /* tool_help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tool_help.h; sourceTree = "<group>"; };
 		E91362031BA8B8C500850259 /* tool_error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tool_error.c; sourceTree = "<group>"; };
 		E91362041BA8B8C500850259 /* tool_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tool_error.h; sourceTree = "<group>"; };
+		E91362061BA8BF1100850259 /* tool_router.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tool_router.c; sourceTree = "<group>"; };
+		E91362071BA8BF1100850259 /* tool_router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tool_router.h; sourceTree = "<group>"; };
+		E91362091BA8C75700850259 /* h264_defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = h264_defines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +91,12 @@
 				E91361FB1BA8AEB300850259 /* tool_task.h */,
 				E91362031BA8B8C500850259 /* tool_error.c */,
 				E91362041BA8B8C500850259 /* tool_error.h */,
+				E91362061BA8BF1100850259 /* tool_router.c */,
+				E91362071BA8BF1100850259 /* tool_router.h */,
 				E91361FD1BA8AF4400850259 /* tool_help.c */,
 				E91361FE1BA8AF4400850259 /* tool_help.h */,
 				E91361F91BA8AE9F00850259 /* tool_defines.h */,
+				E91362091BA8C75700850259 /* h264_defines.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -171,6 +178,7 @@
 				E91361FC1BA8AEB300850259 /* tool_task.c in Sources */,
 				E91361FF1BA8AF4400850259 /* tool_help.c in Sources */,
 				E91361F21BA89FBF00850259 /* tool_main.c in Sources */,
+				E91362081BA8BF1100850259 /* tool_router.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

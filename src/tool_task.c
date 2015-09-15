@@ -8,22 +8,23 @@
 
 #include "tool_task.h"
 #include "tool_error.h"
+#include "tool_router.h"
+
+static void init_task(cpili_task_t *task) {
+    task->handler = NULL;
+    
+    task->error.code = CPILI_ERROR_NONE;
+    task->error.message = NULL;
+    
+    task->param.input = CPILI_INPUT_DEFAULT;
+    task->param.output = CPILI_OUTPUT_DEFAULT;
+}
 
 cpili_task_t todo(int argc, char *argv[]) {
     cpili_task_t task;
+    init_task(&task);
     
-    if (2 == argc) {
-        // -h, -v
-    } else if (5 >= argc) {
-        if (1 == argc % 2) {
-            //
-        } else {
-            // wrong param
-            init_error(CPILI_ERROR_WRONG_PARAM, &(task.error));
-        }
-    } else {
-        init_error(CPILI_ERROR_WRONG_PARAM, &(task.error));
-    }
+    tool_bind_handler(argc, argv, &task);
     
     return task;
 }

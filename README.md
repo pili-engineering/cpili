@@ -42,7 +42,10 @@ Options
             Output RTMP url or output flv file path.
             
     Video options
-    
+        
+        -vf, --video-fps <video frames per second> (input)
+            Video's fps value.
+        
         -hf, --h264-bitstream-format <H.264 bitstream format> (output)
             Set H.264 bitstream format, it has effet on the way to packetize NAL units into flv tag.
             
