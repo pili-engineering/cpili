@@ -7,7 +7,11 @@
 //
 
 #include "tool_main.h"
+#include "tool_task.h"
 
 int main(int argc, char *argv[]) {
+    cpili_task_t task = todo(argc, argv);
+    go(task);
+    
     return 0;
 }
