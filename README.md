@@ -21,7 +21,7 @@ $ make install
 ## Usage
 
 ```bash
-cpili [global options] {[input file options] -i <u>input_file</u>} ... {[output options] -o <u>output</u>}
+cpili [global options] {[input file options] -i input_file} ... {[output options] -o output}
 
 Options
 
