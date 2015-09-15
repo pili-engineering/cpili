@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E91361F21BA89FBF00850259 /* tool_main.c in Sources */ = {isa = PBXBuildFile; fileRef = E91361F01BA89FBF00850259 /* tool_main.c */; };
+		E91361F71BA8A3B800850259 /* tool_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = E91361F51BA8A3B800850259 /* tool_parser.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,9 @@
 		E91361F11BA89FBF00850259 /* tool_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tool_main.h; sourceTree = "<group>"; };
 		E91361F31BA89FD000850259 /* tool_version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tool_version.h; sourceTree = "<group>"; };
 		E91361F41BA89FD900850259 /* cpili_version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpili_version.h; sourceTree = "<group>"; };
+		E91361F51BA8A3B800850259 /* tool_parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tool_parser.c; sourceTree = "<group>"; };
+		E91361F61BA8A3B800850259 /* tool_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tool_parser.h; sourceTree = "<group>"; };
+		E91361F81BA8A83F00850259 /* tool_task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tool_task.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,9 @@
 				E91361F01BA89FBF00850259 /* tool_main.c */,
 				E91361F11BA89FBF00850259 /* tool_main.h */,
 				E91361F31BA89FD000850259 /* tool_version.h */,
+				E91361F51BA8A3B800850259 /* tool_parser.c */,
+				E91361F61BA8A3B800850259 /* tool_parser.h */,
+				E91361F81BA8A83F00850259 /* tool_task.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -150,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E91361F71BA8A3B800850259 /* tool_parser.c in Sources */,
 				E91361F21BA89FBF00850259 /* tool_main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
