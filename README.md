@@ -6,11 +6,12 @@ A command line tool for streaming a raw H.264 / flv file over RTMP, it can also 
 
 With homebrew:
 
-```shell
+```bash
 $ brew install cpili
 ```
 
 With git:
+
 ```
 $ git clone https://github.com/pili-engineering/cpili.git /tmp/cpili
 $ cd /tmp/cpili
@@ -19,7 +20,7 @@ $ make install
 
 ## Usage
 
-```shell
+```bash
 cpili [global options] {[input file options] -i <u>input_file</u>} ... {[output options] -o <u>output</u>}
 
 Options
@@ -62,7 +63,8 @@ Options
 ## Examples
 
 Live streaming a raw H.264 file
-```shell
+
+```bash
 $ cpili -i ~/Videos/test.h264 -o rtmp://publish-rtmp.live.com/hello/world
 ```
 
