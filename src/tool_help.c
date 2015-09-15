@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "tool_help.h"
 
-static const char *const helptext[] = {
+static const char *const help_text[] = {
     "cpili -i input_file [output options] -o output",
     "Options",
     "   Generic options",
@@ -37,7 +37,7 @@ static const char *const helptext[] = {
 };
 
 void tool_help() {
-    for(int i = 0; helptext[i]; i++) {
-        puts(helptext[i]);
+    for(int i = 0; help_text[i]; i++) {
+        puts(help_text[i]);
     }
 }

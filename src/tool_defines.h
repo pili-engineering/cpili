@@ -34,7 +34,7 @@ typedef enum cpili_stream_protocol {
 // Input
 struct cpili_input {
     cpili_file_format_t file_format;
-    char    file_path[MAX_INPUT_FILE_PATH_LENGTH];
+    const char    *file_path;
 };
 
 typedef struct cpili_input cpili_input_t;
@@ -44,7 +44,7 @@ struct cpili_output {
     cpili_io_type_t   type;
     cpili_file_format_t   file_format;
     cpili_stream_protocol_t   stream_protocol;
-    char    url[MAX_OUTPUT_URL_LENGTH];
+    const char    *url;
 };
 
 typedef struct cpili_output cpili_output_t;
@@ -58,7 +58,7 @@ typedef enum cpili_error_code {
 
 struct cpili_error {
     cpili_error_code_t code;
-    char message[MAX_ERROR_MESSAGE_LENGTH];
+    const char *message;
 };
 
 typedef struct cpili_error cpili_error_t;
