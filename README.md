@@ -34,33 +34,29 @@ Options
         
     Main options
     
-        -i, --input <input file path> <u>(input)</u>
+        -i, --input <input file path> (input)
             Input file path.
             
-        -o, --output <output RTMP url / output flv file path> <u>(output)</u>
+        -o, --output <output RTMP url / output flv file path> (output)
             Output RTMP url or output flv file path.
             
     Video options
     
-        -hf, --h264-bitstream-format <H.264 bitstream format> <u>(output)</u>
+        -hf, --h264-bitstream-format <H.264 bitstream format> (output)
             Set H.264 bitstream format, it has effet on the way to packetize NAL units into flv tag.
             
-            *Default*: avcc
-            
             Possible flags for this option are:
             
-            *avcc*
-            *annexb*
+            avcc (default)
+            annexb
             
-        -sp, --sps-pps-packetization-mode <sps pps packetization mode> <u>(output)</u>
+        -sp, --sps-pps-packetization-mode <sps pps packetization mode> (output)
             Set sps and pps packetization mode.
             
-            *Default*: header-only
-            
             Possible flags for this option are:
             
-            *header-only*
-            *every-keyframe*
+            header-only (default)
+            every-keyframe
 ```
 
 ## Examples
