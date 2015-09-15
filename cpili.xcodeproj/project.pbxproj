@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E91361EA1BA884B200850259 /* cpili_main.c in Sources */ = {isa = PBXBuildFile; fileRef = E91361E81BA884B200850259 /* cpili_main.c */; };
+		E91361F21BA89FBF00850259 /* tool_main.c in Sources */ = {isa = PBXBuildFile; fileRef = E91361F01BA89FBF00850259 /* tool_main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,9 +24,11 @@
 
 /* Begin PBXFileReference section */
 		E91361D11BA8767100850259 /* cpili */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cpili; sourceTree = BUILT_PRODUCTS_DIR; };
-		E91361E81BA884B200850259 /* cpili_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpili_main.c; sourceTree = "<group>"; };
-		E91361E91BA884B200850259 /* cpili_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpili_main.h; sourceTree = "<group>"; };
-		E91361EC1BA89D4000850259 /* cpili_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpili_version.h; sourceTree = "<group>"; };
+		E91361EF1BA89F9800850259 /* cpili.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpili.h; sourceTree = "<group>"; };
+		E91361F01BA89FBF00850259 /* tool_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tool_main.c; sourceTree = "<group>"; };
+		E91361F11BA89FBF00850259 /* tool_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tool_main.h; sourceTree = "<group>"; };
+		E91361F31BA89FD000850259 /* tool_version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tool_version.h; sourceTree = "<group>"; };
+		E91361F41BA89FD900850259 /* cpili_version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpili_version.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		E91361D31BA8767100850259 /* cpili */ = {
 			isa = PBXGroup;
 			children = (
+				E91361ED1BA89F7D00850259 /* include */,
 				E91361E51BA87B3700850259 /* src */,
 			);
 			path = cpili;
@@ -67,12 +70,29 @@
 		E91361E51BA87B3700850259 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E91361E81BA884B200850259 /* cpili_main.c */,
-				E91361E91BA884B200850259 /* cpili_main.h */,
-				E91361EC1BA89D4000850259 /* cpili_version.h */,
+				E91361F01BA89FBF00850259 /* tool_main.c */,
+				E91361F11BA89FBF00850259 /* tool_main.h */,
+				E91361F31BA89FD000850259 /* tool_version.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
+		};
+		E91361ED1BA89F7D00850259 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E91361EE1BA89F7D00850259 /* cpili */,
+			);
+			path = include;
+			sourceTree = SOURCE_ROOT;
+		};
+		E91361EE1BA89F7D00850259 /* cpili */ = {
+			isa = PBXGroup;
+			children = (
+				E91361EF1BA89F9800850259 /* cpili.h */,
+				E91361F41BA89FD900850259 /* cpili_version.h */,
+			);
+			path = cpili;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -130,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E91361EA1BA884B200850259 /* cpili_main.c in Sources */,
+				E91361F21BA89FBF00850259 /* tool_main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +237,11 @@
 		E91361D91BA8767100850259 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/include",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -224,6 +249,11 @@
 		E91361DA1BA8767100850259 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/include",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
