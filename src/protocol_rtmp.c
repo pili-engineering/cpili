@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-static void stream_cb(uint8_t state) {
+static void stream_cb(uint8_t state, pili_error_t error) {
     printf("stream state: %d\n", state);
 }
 
@@ -41,7 +41,7 @@ bool rtmp_write(cpili_url_context_t *ctx, const unsigned char *buf, int size) {
     pili_stream_context_p stream_ctx = ((rtmp_user_data_t *)ctx->user_data)->stream_ctx;
     
     flv_tag_p flv_tag = (flv_tag_p)buf;
-    bool result = pili_write_packet(stream_ctx, flv_tag);
+    bool result = pili_write_flv_tag(stream_ctx, flv_tag);
     
     return result;
 }
