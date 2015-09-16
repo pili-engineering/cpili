@@ -15,6 +15,8 @@
 		E913620C1BA8D64800850259 /* tool_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = E913620A1BA8D64800850259 /* tool_parser.c */; };
 		E91362251BA9001200850259 /* libpili_push.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E913621F1BA9001200850259 /* libpili_push.a */; };
 		E91362291BA9076300850259 /* tool_version.c in Sources */ = {isa = PBXBuildFile; fileRef = E91362281BA9076300850259 /* tool_version.c */; };
+		E980B7661BA96D2B0013CE62 /* tool_protocol.c in Sources */ = {isa = PBXBuildFile; fileRef = E980B7641BA96D2B0013CE62 /* tool_protocol.c */; };
+		E980B7691BA96D500013CE62 /* protocol_rtmp.c in Sources */ = {isa = PBXBuildFile; fileRef = E980B7671BA96D500013CE62 /* protocol_rtmp.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +57,12 @@
 		E913621C1BA9001200850259 /* push.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = push.h; sourceTree = "<group>"; };
 		E913621F1BA9001200850259 /* libpili_push.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpili_push.a; sourceTree = "<group>"; };
 		E91362281BA9076300850259 /* tool_version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tool_version.c; sourceTree = "<group>"; };
+		E980B7631BA96CFB0013CE62 /* protocol_defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = protocol_defines.h; sourceTree = "<group>"; };
+		E980B7641BA96D2B0013CE62 /* tool_protocol.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tool_protocol.c; sourceTree = "<group>"; };
+		E980B7651BA96D2B0013CE62 /* tool_protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tool_protocol.h; sourceTree = "<group>"; };
+		E980B7671BA96D500013CE62 /* protocol_rtmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = protocol_rtmp.c; sourceTree = "<group>"; };
+		E980B7681BA96D500013CE62 /* protocol_rtmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = protocol_rtmp.h; sourceTree = "<group>"; };
+		E980B76A1BA973170013CE62 /* tool_callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tool_callback.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +120,13 @@
 				E913620B1BA8D64800850259 /* tool_parser.h */,
 				E91361FD1BA8AF4400850259 /* tool_help.c */,
 				E91361FE1BA8AF4400850259 /* tool_help.h */,
+				E980B7641BA96D2B0013CE62 /* tool_protocol.c */,
+				E980B7651BA96D2B0013CE62 /* tool_protocol.h */,
+				E980B7631BA96CFB0013CE62 /* protocol_defines.h */,
+				E980B7671BA96D500013CE62 /* protocol_rtmp.c */,
+				E980B7681BA96D500013CE62 /* protocol_rtmp.h */,
 				E91361F91BA8AE9F00850259 /* tool_defines.h */,
+				E980B76A1BA973170013CE62 /* tool_callback.h */,
 				E91362091BA8C75700850259 /* h264_defines.h */,
 			);
 			path = src;
@@ -245,8 +259,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E91362291BA9076300850259 /* tool_version.c in Sources */,
+				E980B7661BA96D2B0013CE62 /* tool_protocol.c in Sources */,
 				E91362051BA8B8C500850259 /* tool_error.c in Sources */,
 				E91361FC1BA8AEB300850259 /* tool_task.c in Sources */,
+				E980B7691BA96D500013CE62 /* protocol_rtmp.c in Sources */,
 				E913620C1BA8D64800850259 /* tool_parser.c in Sources */,
 				E91361FF1BA8AF4400850259 /* tool_help.c in Sources */,
 				E91361F21BA89FBF00850259 /* tool_main.c in Sources */,
@@ -341,6 +357,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(PROJECT_DIR)/include",
+					"$(PROJECT_DIR)/deps/pili-camera-sdk/src/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -359,6 +376,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(PROJECT_DIR)/include",
+					"$(PROJECT_DIR)/deps/pili-camera-sdk/src/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
