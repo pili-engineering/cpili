@@ -64,7 +64,7 @@ static cpili_option_t get_option(const char *string) {
     cpili_option_t result = aliases[null_option_index];
     for (int i = 0; i < null_option_index; i++) {
         cpili_option_t option = aliases[i];
-        bool found = is_letter ? strcmp(option.letter, str) : strcmp(option.name, str);
+        bool found = is_letter ? !strcmp(option.letter, str) : !strcmp(option.name, str);
         if (found) {
             result = option;
             break;
@@ -80,13 +80,23 @@ void tool_parse(int argc, char *argv[], cpili_task_t *task) {
         init_error(CPILI_ERROR_WRONG_PARAM, &(task->error));
         tool_route(CPILI_OPT_USAGE, task);
     } else {
+        cpili_task_operation_t opt = CPILI_OPT_USAGE;
+        
         int i = 1;
         while (i < argc) {
             cpili_option_t option = get_option(argv[i]);
             if (NULL == option.letter) {
                 init_error(CPILI_ERROR_WRONG_PARAM, &(task->error));
-                tool_route(CPILI_OPT_USAGE, task);
                 break;
+            } else if (!strcmp("h", option.letter)) {
+                // help
+                opt = CPILI_OPT_USAGE;
+            } else if (!strcmp("v", option.letter)) {
+                // version
+                opt = CPILI_OPT_VERSION;
+            } else {
+                // streaming
+                opt = CPILI_OPT_STREAMING;
             }
             
             if (option.extra_param) {
@@ -94,15 +104,16 @@ void tool_parse(int argc, char *argv[], cpili_task_t *task) {
                     const char *value = argv[++i];
                     if (!option.setter(task, value)) {
                         init_error(CPILI_ERROR_WRONG_PARAM, &(task->error));
-                        tool_route(CPILI_OPT_USAGE, task);
                         break;
                     }
                 } else {
                     init_error(CPILI_ERROR_WRONG_PARAM, &(task->error));
-                    tool_route(CPILI_OPT_USAGE, task);
+                    break;
                 }
             }
             ++i;
         }
+        
+        tool_route(opt, task);
     }
 }

@@ -13,8 +13,8 @@
 
 // bool
 typedef enum {
-    true,
-    false
+    false = 0,
+    true
 } bool;
 
 // IO type

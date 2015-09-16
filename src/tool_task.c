@@ -76,7 +76,7 @@ bool task_setter_o(cpili_task_t *task, const char *value) {
     int length = (int)strlen(value);
     cpili_io_type_t io_type = CPILI_IO_TYPE_UNKNOW;
     
-    if (length > 7 && strncmp("rtmp://", value, 7)) {
+    if (length > 7 && !strncmp("rtmp://", value, 7)) {
         io_type = CPILI_IO_TYPE_STREAM;
         task->param.output.type = io_type;
         task->param.output.stream_protocol = CPILI_STREAM_PROTOCOL_RTMP;
