@@ -1,0 +1,3 @@
+[submodule "deps/pili-camera-sdk"]
+	path = deps/pili-camera-sdk
+	url = git@github.com:pili-engineering/pili-camera-sdk.git
