@@ -9,6 +9,6 @@
 #ifndef __cpili__tool_help__
 #define __cpili__tool_help__
 
-void tool_help();
+void print_help();
 
 #endif /* defined(__cpili__tool_help__) */

@@ -8,13 +8,14 @@
 
 #include "tool_router.h"
 #include "tool_help.h"
+#include "tool_version.h"
 
 static void opt_usage(cpili_task_param_t param) {
-    tool_help();
+    print_help();
 }
 
 static void opt_version(cpili_task_param_t param) {
-
+    print_version();
 }
 
 static void opt_streaming(cpili_task_param_t param) {

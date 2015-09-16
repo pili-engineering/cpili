@@ -54,7 +54,7 @@ static const char *const help_text[] = {
     NULL
 };
 
-void tool_help() {
+void print_help() {
     for(int i = 0; help_text[i]; i++) {
         puts(help_text[i]);
     }

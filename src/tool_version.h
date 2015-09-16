@@ -11,4 +11,6 @@
 
 #include <cpili/cpili_version.h>
 
+void print_version();
+
 #endif
