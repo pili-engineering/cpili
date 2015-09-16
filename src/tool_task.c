@@ -10,6 +10,8 @@
 #include "tool_error.h"
 #include "tool_parser.h"
 
+#include <stdio.h>
+
 static void init_task(cpili_task_t *task) {
     task->handler = NULL;
     

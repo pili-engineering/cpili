@@ -81,7 +81,7 @@ struct cpili_output {
 
 typedef struct cpili_output cpili_output_t;
 
-const cpili_output_t CPILI_OUTPUT_DEFAULT = {
+static const cpili_output_t CPILI_OUTPUT_DEFAULT = {
     .type = CPILI_IO_TYPE_UNKNOW,
     .file_format = CPILI_FILE_FORMAT_UNKNOW,
     .stream_protocol = CPILI_STREAM_PROTOCOL_UNKNOW,
