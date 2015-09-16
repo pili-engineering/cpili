@@ -33,11 +33,16 @@ bool rtmp_open(cpili_url_context_t *ctx, const char *url) {
 }
 
 bool rtmp_read(cpili_url_context_t *ctx, unsigned char *buf, int size) {
+    // do nothing
     return false;
 }
 
 bool rtmp_write(cpili_url_context_t *ctx, const unsigned char *buf, int size) {
-    bool result = true;
+    pili_stream_context_p stream_ctx = ((rtmp_user_data_t *)ctx->user_data)->stream_ctx;
+    
+    flv_tag_p flv_tag = (flv_tag_p)buf;
+    bool result = pili_write_packet(stream_ctx, flv_tag);
+    
     return result;
 }
 
