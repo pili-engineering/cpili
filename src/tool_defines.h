@@ -11,10 +11,6 @@
 
 #include "h264_defines.h"
 
-#define MAX_INPUT_FILE_PATH_LENGTH    1024
-#define MAX_OUTPUT_URL_LENGTH         1024
-#define MAX_ERROR_MESSAGE_LENGTH      1024
-
 // bool
 typedef enum {
     true,
