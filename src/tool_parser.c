@@ -9,24 +9,18 @@
 #include "tool_parser.h"
 #include "tool_router.h"
 #include "tool_error.h"
-#include <string.h>
+#include "tool_task.h"
 
-typedef void (*cpili_property_setter)(cpili_task_t *task, const char *value);
+#include <string.h>
 
 struct cpili_option {
     const char *letter; // short for name
     const char *name;   // name
     bool extra_param;   // whether it takes an additional argument
-    cpili_property_setter setter;
+    cpili_task_property_setter setter;
 };
 
 typedef struct cpili_option cpili_option_t;
-
-static void task_setter_i(cpili_task_t *task, const char *value) {}
-static void task_setter_o(cpili_task_t *task, const char *value) {}
-static void task_setter_vf(cpili_task_t *task, const char *value) {}
-static void task_setter_hf(cpili_task_t *task, const char *value) {}
-static void task_setter_sp(cpili_task_t *task, const char *value) {}
 
 static const cpili_option_t aliases[] = {
     {"h",  "help",                          false, NULL},
@@ -98,7 +92,14 @@ void tool_parse(int argc, char *argv[], cpili_task_t *task) {
             if (option.extra_param) {
                 if (i + 1 < argc) {
                     const char *value = argv[++i];
-                    option.setter(task, value);
+                    if (!option.setter(task, value)) {
+                        init_error(CPILI_ERROR_WRONG_PARAM, &(task->error));
+                        tool_route(CPILI_OPT_USAGE, task);
+                        break;
+                    }
+                } else {
+                    init_error(CPILI_ERROR_WRONG_PARAM, &(task->error));
+                    tool_route(CPILI_OPT_USAGE, task);
                 }
             }
             ++i;
