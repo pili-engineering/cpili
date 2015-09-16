@@ -15,6 +15,12 @@
 #define MAX_OUTPUT_URL_LENGTH         1024
 #define MAX_ERROR_MESSAGE_LENGTH      1024
 
+// bool
+typedef enum {
+    true,
+    false
+} bool;
+
 // IO type
 typedef enum cpili_io_type {
     CPILI_IO_TYPE_UNKNOW = 0,

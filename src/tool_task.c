@@ -8,7 +8,7 @@
 
 #include "tool_task.h"
 #include "tool_error.h"
-#include "tool_router.h"
+#include "tool_parser.h"
 
 static void init_task(cpili_task_t *task) {
     task->handler = NULL;
@@ -24,7 +24,7 @@ cpili_task_t todo(int argc, char *argv[]) {
     cpili_task_t task;
     init_task(&task);
     
-    tool_bind_handler(argc, argv, &task);
+    tool_parse(argc, argv, &task);
     
     return task;
 }

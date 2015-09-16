@@ -12,6 +12,12 @@
 #include <stdio.h>
 #include "tool_defines.h"
 
-void tool_bind_handler(int argc, char *argv[], cpili_task_t *task);
+typedef enum cpili_task_operation {
+    CPILI_OPT_USAGE = 0,
+    CPILI_OPT_VERSION,
+    CPILI_OPT_STREAMING
+} cpili_task_operation_t;
+
+void tool_route(cpili_task_operation_t opt, cpili_task_t *task);
 
 #endif /* defined(__cpili__tool_router__) */

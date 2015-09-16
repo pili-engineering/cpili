@@ -9,36 +9,23 @@
 #include "tool_router.h"
 #include "tool_help.h"
 
-// -> rtmp
-static void h264_to_rtmp(cpili_task_param_t param) {}
-static void aac_to_rtmp(cpili_task_param_t param) {}
-static void flv_to_rtmp(cpili_task_param_t param) {}
-
-// -> flv
-static void h264_to_flv(cpili_task_param_t param) {}
-static void aac_to_flv(cpili_task_param_t param) {}
-
-// streaming
-static void streaming_handler(cpili_task_param_t param) {
-}
-
-// usage
-static void usage_handler(cpili_task_param_t param) {
+static void opt_usage(cpili_task_param_t param) {
     tool_help();
 }
 
-void tool_bind_handler(int argc, char *argv[], cpili_task_t *task) {
-    if (2 == argc) {
-        // -h, -v
-        task->handler = usage_handler;
-    } else if (5 >= argc) {
-        if (1 == argc % 2) {
-            //
-        } else {
-            // wrong param
-            task->handler = usage_handler;
-        }
-    } else {
-        task->handler = usage_handler;
-    }
+static void opt_version(cpili_task_param_t param) {
+
+}
+
+static void opt_streaming(cpili_task_param_t param) {
+}
+
+static const cpili_task_handler operation[] = {
+    opt_usage,
+    opt_version,
+    opt_streaming
+};
+
+void tool_route(cpili_task_operation_t opt, cpili_task_t *task) {
+    task->handler = operation[opt];
 }
