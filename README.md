@@ -2,6 +2,14 @@
 
 A command line tool for streaming a raw H.264 / flv file over RTMP, it can also convert a raw H.264 file to flv file.
 
+## Feature
+
+- Done
+    - [x] Flv file -> RTMP Streaming
+- TODO
+    - [] H.264 file -> RTMP Streaming
+    - [] AAC file -> RTMP Streaing
+
 ## Installation (Not ready yet)
 
 With homebrew:
@@ -44,10 +52,10 @@ Options
     Video options
         
         -vf, --video-fps <video frames per second> (input)
-            Video's fps value.
+            Video's fps value. Only work for H.264 input file.
         
         -hf, --h264-bitstream-format <H.264 bitstream format> (output)
-            Set H.264 bitstream format, it has effet on the way to packetize NAL units into flv tag.
+            Set H.264 bitstream format, it has effet on the way to packetize NAL units into flv tag. Only work for H.264 input file.
             
             Possible flags for this option are:
             
@@ -55,7 +63,7 @@ Options
             annexb
             
         -sp, --sps-pps-packetization-mode <sps pps packetization mode> (output)
-            Set sps and pps packetization mode.
+            Set sps and pps packetization mode. Only work for H.264 input file.
             
             Possible flags for this option are:
             
