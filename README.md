@@ -7,8 +7,8 @@ A command line tool for streaming a raw H.264 / flv file over RTMP, it can also 
 - Done
     - [x] Flv file -> RTMP Streaming
 - TODO
-    - [] H.264 file -> RTMP Streaming
-    - [] AAC file -> RTMP Streaing
+    - [ ] H.264 file -> RTMP Streaming
+    - [ ] AAC file -> RTMP Streaing
 
 ## Installation (Not ready yet)
 
