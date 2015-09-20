@@ -9,6 +9,59 @@
 #include "tool_router.h"
 #include "tool_help.h"
 #include "tool_version.h"
+#include "protocol_defines.h"
+
+#include <string.h>
+
+/**
+ * flv -> rtmp
+ */
+static void flv2rtmp(cpili_task_param_t param) {
+    puts("FLV file -> RTMP stream");
+    cpili_url_context_t flv_ctx, rtmp_ctx;
+    
+    flv_ctx.url = param.input.options.file_path;
+    flv_ctx.protocol = NULL;
+    flv_ctx.user_data = NULL;
+    
+    rtmp_ctx.url = param.output.options.url;
+    rtmp_ctx.protocol = NULL;
+    rtmp_ctx.user_data = NULL;
+    
+    for (int i = 0; i < PROTOCOL_COUNT; i++) {
+        cpili_protocol_t protocol = protocols[i];
+        
+        if (strcmp("flv", protocol.name)) {
+            flv_ctx.protocol = &protocol;
+        } else if (strcmp("rtmp", protocol.name)) {
+            rtmp_ctx.protocol = &protocol;
+        }
+        
+        if (flv_ctx.protocol && rtmp_ctx.protocol) {
+            break;
+        }
+    }
+    
+    if (!flv_ctx.protocol || !rtmp_ctx.protocol) {
+        return;
+    }
+    
+    if (!flv_ctx.protocol->url_open(&flv_ctx, flv_ctx.url)) {
+        puts("fail to open flv file");
+        return;
+    }
+    
+    bool res = true;
+    do {
+        flv_tag_p flv_tag = flv_create_tag();
+        res = flv_ctx.protocol->url_read(&flv_ctx, (unsigned char *)flv_tag, sizeof(flv_tag_t));
+        rtmp_ctx.protocol->url_write(&rtmp_ctx, (unsigned char *)flv_tag, sizeof(flv_tag_t));
+        flv_release_tag(flv_tag);
+        
+    } while (res);
+}
+
+//-----------
 
 static void opt_usage(cpili_task_param_t param) {
     print_help();
@@ -19,6 +72,11 @@ static void opt_version(cpili_task_param_t param) {
 }
 
 static void opt_streaming(cpili_task_param_t param) {
+    if (CPILI_FILE_FORMAT_FLV == param.input.file_format) {
+        if (CPILI_IO_TYPE_STREAM == param.output.type && CPILI_STREAM_PROTOCOL_RTMP == param.output.stream_protocol) {
+            flv2rtmp(param);
+        }
+    }
 }
 
 static const cpili_task_handler operation[] = {

@@ -11,10 +11,14 @@
 
 #include "tool_protocol.h"
 #include "protocol_rtmp.h"
+#include "protocol_flv.h"
+
+#define PROTOCOL_COUNT  2
 
 // protocols
 static const cpili_protocol_t protocols[] = {
-    {"rtmp", rtmp_open, rtmp_read, rtmp_write, rtmp_close}
+    {"rtmp", rtmp_open, rtmp_read, rtmp_write, rtmp_close},
+    {"flv", flv_open, flv_read, flv_write, flv_close}
 };
 
 #endif
