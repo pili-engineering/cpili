@@ -10,22 +10,35 @@
 
 #include <stdio.h>
 
+const char *stream_states[] = {
+    "Stream state: Unknow",
+    "Stream state: Connecting",
+    "Stream state: Connected",
+    "Stream state: Disconnected",
+    "Stream state: Error"
+};
+
 static void stream_cb(uint8_t state, pili_error_t error) {
-    printf("stream state: %d\n", state);
+    printf("%s\n", stream_states[state]);
 }
 
 bool rtmp_open(cpili_url_context_t *ctx, const char *url) {
     pili_stream_context_p stream_ctx = pili_create_stream_context();
     pili_init_stream_context(stream_ctx, 0, 0, stream_cb);
     
-    rtmp_user_data_t user_data = {stream_ctx, {NULL, NULL}};
-    ctx->user_data = &user_data;
+    rtmp_user_data_t *user_data = malloc(sizeof(rtmp_user_data_t));
+    user_data->stream_ctx = stream_ctx;
+    user_data->callback.target = NULL;
+    user_data->callback.callback = NULL;
+    
+    ctx->user_data = user_data;
     
     bool result = !!pili_stream_push_open(stream_ctx, url);
     if (result) {
         pili_release_stream_context(stream_ctx);
         ctx->user_data = NULL;
-        user_data.stream_ctx = NULL;
+        user_data->stream_ctx = NULL;
+        free(user_data);
         puts("Fail to open rtmp stream");
     }
     

@@ -42,10 +42,18 @@ static size_t read_flv_tag(uint8_t *index, flv_tag_p tag) {
     size_t size = 4;
     p += 4; // skip pre tag size
     
-    size += read_1(p, &(tag->tag_type));
-    size += read_3(p, &(tag->data_size));
-    size += read_time(p, &(tag->timestamp));
-    size += read_3(p, &(tag->stream_id));
+    size_t ss = read_1(p, &(tag->tag_type));
+    size += ss;
+    p += ss;
+    ss = read_3(p, &(tag->data_size));
+    size += ss;
+    p += ss;
+    ss = read_time(p, &(tag->timestamp));
+    size += ss;
+    p += ss;
+    ss = read_3(p, &(tag->stream_id));
+    size += ss;
+    p += ss;
     
     tag->data = malloc(tag->data_size);
     memcpy(tag->data, p, tag->data_size);
@@ -64,19 +72,15 @@ bool flv_open(cpili_url_context_t *ctx, const char *url) {
         return false;
     }
     
-    flv_user_data_t user_data = {
-        .file = file,
-        .writer = {
-            .is_flv_header_writen = false
-        },
-        .reader = {
-            .eof = false,
-            .file_size = 0,
-            .buffer = NULL,
-            .index = NULL
-        }
-    };
-    ctx->user_data = &user_data;
+    flv_user_data_t *user_data = malloc(sizeof(flv_user_data_t));
+    user_data->file = file;
+    user_data->writer.is_flv_header_writen = false;
+    user_data->reader.eof = false;
+    user_data->reader.file_size = 0;
+    user_data->reader.buffer = NULL;
+    user_data->reader.index = NULL;
+
+    ctx->user_data = user_data;
     
     return true;
 }
@@ -99,6 +103,7 @@ bool flv_read(cpili_url_context_t *ctx, unsigned char *buf, int size) {
         
         if (NULL == user_data->reader.buffer) {
             user_data->reader.buffer = malloc(sizeof(uint8_t) * file_size);
+            fread(user_data->reader.buffer, 1, file_size, user_data->file);
         }
         
         if (NULL == user_data->reader.index) {

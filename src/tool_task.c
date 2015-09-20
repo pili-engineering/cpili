@@ -52,11 +52,11 @@ bool task_setter_i(cpili_task_t *task, const char *value) {
     }
     
     if (file_extension && ext_length > 0) {
-        if (strcmp("h264", file_extension)) {
+        if (!strcmp("h264", file_extension)) {
             file_format = CPILI_FILE_FORMAT_H264;
-        } else if (strcmp("flv", file_extension)) {
+        } else if (!strcmp("flv", file_extension)) {
             file_format = CPILI_FILE_FORMAT_FLV;
-        } else if (strcmp("aac", file_extension)) {
+        } else if (!strcmp("aac", file_extension)) {
             file_format = CPILI_FILE_FORMAT_AAC;
         }
         
@@ -95,7 +95,7 @@ bool task_setter_o(cpili_task_t *task, const char *value) {
         }
         
         if (file_extension && ext_length > 0) {
-            if (strcmp("flv", file_extension)) {
+            if (!strcmp("flv", file_extension)) {
                 io_type = CPILI_IO_TYPE_FILE;
                 task->param.output.type = io_type;
                 task->param.output.options.url = value;
@@ -119,10 +119,10 @@ bool task_setter_vf(cpili_task_t *task, const char *value) {
 }
 
 bool task_setter_hf(cpili_task_t *task, const char *value) {
-    if (strcmp("avcc", value)) {
+    if (!strcmp("avcc", value)) {
         task->param.output.video_options.bitstream_format = H264_FORMAT_AVCC;
         return true;
-    } else if (strcmp("annexb", value)) {
+    } else if (!strcmp("annexb", value)) {
         task->param.output.video_options.bitstream_format = H264_FORMAT_ANNEXB;
         return true;
     }
@@ -131,10 +131,10 @@ bool task_setter_hf(cpili_task_t *task, const char *value) {
 }
 
 bool task_setter_sp(cpili_task_t *task, const char *value) {
-    if (strcmp("header-only", value)) {
+    if (!strcmp("header-only", value)) {
         task->param.output.video_options.sps_pps_packetization_mode = H264_PMODE_HEADER_ONLY;
         return true;
-    } else if (strcmp("every-keyframe", value)) {
+    } else if (!strcmp("every-keyframe", value)) {
         task->param.output.video_options.sps_pps_packetization_mode = H264_PMODE_EVERY_KEYFRAME;
         return true;
     }

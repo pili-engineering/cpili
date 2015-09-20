@@ -12,6 +12,7 @@
 #include "protocol_defines.h"
 
 #include <string.h>
+#include <unistd.h>
 
 /**
  * flv -> rtmp
@@ -21,42 +22,38 @@ static void flv2rtmp(cpili_task_param_t param) {
     cpili_url_context_t flv_ctx, rtmp_ctx;
     
     flv_ctx.url = param.input.options.file_path;
-    flv_ctx.protocol = NULL;
     flv_ctx.user_data = NULL;
     
     rtmp_ctx.url = param.output.options.url;
-    rtmp_ctx.protocol = NULL;
     rtmp_ctx.user_data = NULL;
     
     for (int i = 0; i < PROTOCOL_COUNT; i++) {
         cpili_protocol_t protocol = protocols[i];
         
-        if (strcmp("flv", protocol.name)) {
-            flv_ctx.protocol = &protocol;
-        } else if (strcmp("rtmp", protocol.name)) {
-            rtmp_ctx.protocol = &protocol;
-        }
-        
-        if (flv_ctx.protocol && rtmp_ctx.protocol) {
-            break;
+        if (!strcmp("flv", protocol.name)) {
+            cpili_protocol_cpy(flv_ctx.protocol, protocol);
+        } else if (!strcmp("rtmp", protocol.name)) {
+            cpili_protocol_cpy(rtmp_ctx.protocol, protocol);
         }
     }
     
-    if (!flv_ctx.protocol || !rtmp_ctx.protocol) {
+    if (!flv_ctx.protocol.url_open(&flv_ctx, flv_ctx.url)) {
+        puts("fail to open flv file");
         return;
     }
     
-    if (!flv_ctx.protocol->url_open(&flv_ctx, flv_ctx.url)) {
-        puts("fail to open flv file");
+    if (-1 == rtmp_ctx.protocol.url_open(&rtmp_ctx, rtmp_ctx.url)) {
+        puts("fail to connect rtmp");
         return;
     }
     
     bool res = true;
     do {
         flv_tag_p flv_tag = flv_create_tag();
-        res = flv_ctx.protocol->url_read(&flv_ctx, (unsigned char *)flv_tag, sizeof(flv_tag_t));
-        rtmp_ctx.protocol->url_write(&rtmp_ctx, (unsigned char *)flv_tag, sizeof(flv_tag_t));
+        res = flv_ctx.protocol.url_read(&flv_ctx, (unsigned char *)flv_tag, sizeof(flv_tag_t));
+        rtmp_ctx.protocol.url_write(&rtmp_ctx, (unsigned char *)flv_tag, sizeof(flv_tag_t));
         flv_release_tag(flv_tag);
+        usleep(1000000.0 / (float)param.input.video_options.fps);
         
     } while (res);
 }
