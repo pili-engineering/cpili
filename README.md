@@ -73,10 +73,10 @@ Options
 
 ## Examples
 
-Live streaming a raw H.264 file
+Live streaming a FLV file
 
 ```bash
-$ cpili -i ~/Videos/test.h264 -o rtmp://publish-rtmp.live.com/hello/world
+$ cpili -i ~/Videos/test.flv -o rtmp://publish-rtmp.live.com/hello/world
 ```
 
 ## License
