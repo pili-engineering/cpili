@@ -48,12 +48,22 @@ static void flv2rtmp(cpili_task_param_t param) {
     }
     
     bool res = true;
+    uint32_t pre_tag_ts = 0;
     do {
         flv_tag_p flv_tag = flv_create_tag();
         res = flv_ctx.protocol.url_read(&flv_ctx, (unsigned char *)flv_tag, sizeof(flv_tag_t));
+        
+        uint32_t tag_ts = flv_tag->timestamp;
+        if (!pre_tag_ts) {
+            usleep(40000);
+        } else {
+            printf("%d, %u\n", flv_tag->tag_type, tag_ts);
+            usleep(tag_ts - pre_tag_ts);
+        }
+        pre_tag_ts = tag_ts;
+        
         rtmp_ctx.protocol.url_write(&rtmp_ctx, (unsigned char *)flv_tag, sizeof(flv_tag_t));
         flv_release_tag(flv_tag);
-        usleep(1000000.0 / (float)param.input.video_options.fps);
         
     } while (res);
 }

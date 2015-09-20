@@ -29,7 +29,7 @@ static size_t read_3(uint8_t *p, uint32_t *d) {
 }
 
 static size_t read_time(uint8_t *p, uint32_t *utime) {
-    *utime = (p[0] << 24) | (p[1] << 16) | (p[2] << 8) | p[3];
+    *utime = (p[3] << 24) | (p[2] << 16) | (p[1] << 8) | p[0];
     *utime = HTONTIME(*utime);
     return 4;
 }
@@ -57,6 +57,7 @@ static size_t read_flv_tag(uint8_t *index, flv_tag_p tag) {
     
     tag->data = malloc(tag->data_size);
     memcpy(tag->data, p, tag->data_size);
+    size += tag->data_size;
     
     return size;
 }
