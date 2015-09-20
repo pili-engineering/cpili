@@ -42,7 +42,7 @@ static void flv2rtmp(cpili_task_param_t param) {
         return;
     }
     
-    if (-1 == rtmp_ctx.protocol.url_open(&rtmp_ctx, rtmp_ctx.url)) {
+    if (rtmp_ctx.protocol.url_open(&rtmp_ctx, rtmp_ctx.url)) {
         puts("fail to connect rtmp");
         return;
     }
