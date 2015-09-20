@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "882A32124ED79649F0058CFA5BA3099777896940",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "882A32124ED79649F0058CFA5BA3099777896940" : 0,
+    "6005A2453269D6CA2601F5990BEDB435C91AEE68" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5CCF333A-9047-45DA-8FFB-B0E3489CF09F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "882A32124ED79649F0058CFA5BA3099777896940" : "cpili",
+    "6005A2453269D6CA2601F5990BEDB435C91AEE68" : "cpilideps\/pili-camera-sdk"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "cpili",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "cpili.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:pili-engineering\/pili-camera-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6005A2453269D6CA2601F5990BEDB435C91AEE68"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:0dayZh\/cpili.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "882A32124ED79649F0058CFA5BA3099777896940"
+    }
+  ]
+}

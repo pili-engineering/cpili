@@ -15,6 +15,15 @@
 
 struct flv_user_data {
     FILE    *file;
+    struct {
+        bool    is_flv_header_writen;
+    } writer;
+    struct {
+        bool    eof;
+        long    file_size;
+        uint8_t *buffer;
+        uint8_t *index;
+    } reader;
 };
 
 typedef struct flv_user_data flv_user_data_t;
